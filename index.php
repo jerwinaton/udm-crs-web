@@ -32,6 +32,9 @@
                     <input type="password" id="password" name="password" required>
                     <input type="submit" class="btn-login-submit" value="Login">
                 </form>
+                <?php
+                require 'includes/connection.php';
+                ?>
             </div>
         </div>
     </section>
