@@ -1,0 +1,56 @@
+/* Poppins and DM Serif font */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital@0;1&display=swap");
+:root {
+  --green: #0b6b09;
+  --gold: #efd314;
+  --darkgray: #181818;
+  --lightgray: #202121;
+}
+body {
+  font-family: "Poppins", serif;
+}
+.school-name {
+  margin-bottom: 20px;
+}
+.school-name div > h3 {
+  font-family: "DM Serif Display", serif;
+}
+.school-name div > * {
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.8);
+  color: white;
+  margin: 0;
+}
+section {
+  background: url("../assets/images/udm_login_bg_desktop.jpg") no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+/* login form */
+.login-form {
+  width: 320px;
+  height: auto;
+  background: white;
+  padding: 20px;
+  margin-bottom: 50px;
+}
+.login-form form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.login-form form input {
+  width: 100%;
+}
+.login-form form .btn-login-submit {
+  border: none;
+  padding: 10px 0;
+  margin-top: 30px;
+  background: var(--gold);
+  color: white;
+  font-weight: bold;
+}
