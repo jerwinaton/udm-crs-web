@@ -80,8 +80,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
             </div>
         </div>
     </section>
-    <footer>
-        <p>Copyright All Right Reserved 2021</p>
+    <footer class="d-flex justify-content-center align-items-center">
+        <p class="mb-0" style="font-size: .7rem;">Copyright &copy; All Right Reserved 2021</p>
     </footer>
 </body>
 <!-- scripts for bootstrap -->
