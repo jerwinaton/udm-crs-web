@@ -19,14 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($row != FALSE) { //if username is found
             if (password_verify($password, $row["student_password"])) {
-                $_SESSION['loggedin'] = true;
+                $_SESSION["loggedin"] = true;
             } else {
                 echo $response;
-                $_SESSION['loggedin'] = false;
+                $_SESSION["loggedin"] = false;
             }
         } else {
             echo $response;
-            $_SESSION['loggedin'] = false;
+            $_SESSION["loggedin"] = false;
         }
     } catch (PDOException $err) {
         $err->getMessage();
