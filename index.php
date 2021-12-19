@@ -30,10 +30,40 @@
                     <input type="text" id="username" name="username" required>
                     <label for="username" class="align-self-start">Password</label>
                     <input type="password" id="password" name="password" required>
-                    <input type="submit" class="btn-login-submit" value="Login">
+                    <input type="submit" class="btn-login-submit" name="btn-login-submit" value="Login">
                 </form>
                 <?php
                 require 'includes/connection.php';
+                session_start();
+
+                if (isset($_SESSION["user_login"])) { //check session if the user is already logged in
+                    header("location: student/home.php");
+                }
+
+                if (isset($_POST['btn-login-submit'])) {
+                    $username = $_POST['username']; //username textbox
+                    $password = $_POST['password']; //password textbox
+
+                    //check credentials if found in database
+                    try {
+                        $select_stmt = $conn->prepare("SELECT * FROM udm.students WHERE student_username=:uname"); //prepared selct statement
+                        $select_stmt->execute(array(':uname' => $username)); //execute and bind parameters
+                        $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
+
+                        if ($row !== FALSE) { //if username is found
+                            if (password_verify($password, $row["student_password"])) {
+                                echo "found";
+                            } else {
+                                echo "not found pass";
+                            }
+                        } else {
+                            echo "not found at all";
+                        }
+                    } catch (PDOException $err) {
+                        $err->getMessage();
+                    }
+                }
+
                 ?>
             </div>
         </div>

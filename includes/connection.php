@@ -9,5 +9,5 @@ try {
 } catch (PDOException $err) {
     $err->getMessage();
 }
-$status = $conn->getAttribute(PDO::ATTR_CONNECTION_STATUS);
-echo $status;
+//$status = $conn->getAttribute(PDO::ATTR_CONNECTION_STATUS);
+//echo $status; //get status
