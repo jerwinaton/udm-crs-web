@@ -47,6 +47,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     <label for="username" class="align-self-start">Password</label>
                     <input type="password" id="password" name="password" required>
                     <button type="submit" class="btn-login-submit" id="login" name="btn-login-submit">Login</button>
+                    <a class="forgot-password" href="forms/forgot-password.php">Forgot Password?</a>
                     <script>
                         $(function() {
 

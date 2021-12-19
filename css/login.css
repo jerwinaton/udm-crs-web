@@ -72,6 +72,14 @@ section {
   font-weight: bold;
   text-align: center;
 }
+/* forgot password link */
+.forgot-password {
+  margin-top: 8px;
+  font-size: 0.8rem;
+  color: var(--green);
+  font-weight: bold;
+  text-decoration: none;
+}
 footer {
   height: 5vh;
 }
