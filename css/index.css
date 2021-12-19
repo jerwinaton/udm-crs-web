@@ -55,15 +55,27 @@ section {
   font-size: 0.8rem;
   color: var(--green);
 }
-.login-form form .btn-login-submit {
+.login-form form > .btn-login-submit {
   border: none;
   padding: 5px 0;
   margin-top: 30px;
   background: var(--green);
   color: white;
   font-weight: bold;
-  transition: background 0.3s;
+  width: 100%;
+  transition: background 0.2s;
 }
-.login-form form .btn-login-submit:hover {
+.login-form form > .btn-login-submit:hover {
   background: var(--gold);
+}
+/* login status message */
+.login-form form > .login-status-msg {
+  font-size: 0.8rem;
+  background: rgb(255, 232, 232);
+  border: 0.5px solid rgb(255, 106, 106);
+  color: rgb(255, 58, 58);
+  width: 100%;
+  padding: 3px 10px;
+  font-weight: bold;
+  text-align: center;
 }

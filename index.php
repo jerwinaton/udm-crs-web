@@ -1,3 +1,6 @@
+<?php session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,8 +9,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Universidad de Manila | Login</title>
+    <!-- jquery -->
+    <script src="jquery/jquery3.6.0.min.js"></script>
     <!-- bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="bootstrap5/css/bootstrap.min.css">
     <!-- own css -->
     <link rel="stylesheet" href="css/index.css">
 </head>
@@ -24,56 +29,54 @@
         </div>
         <div class="container d-flex justify-content-center align-items-center">
             <div class="login-form">
-                <form action="" method="POST">
+                <form action="queries/validate.php" method="POST">
                     <h3>Login</h3>
+                    <!--login status message if error logging in-->
+                    <p id="status-msg"></p>
+
                     <label for="username" class="align-self-start">Username</label>
                     <input type="text" id="username" name="username" required>
                     <label for="username" class="align-self-start">Password</label>
                     <input type="password" id="password" name="password" required>
-                    <input type="submit" class="btn-login-submit" name="btn-login-submit" value="Login">
+                    <button type="submit" class="btn-login-submit" id="login" name="btn-login-submit">Login</button>
+                    <script>
+                        $(function() {
+
+                            $('form').on('submit', function(e) {
+
+                                e.preventDefault();
+
+                                $.ajax({
+                                    type: 'post',
+                                    url: 'queries/validate.php',
+                                    data: $('form').serialize(),
+                                    beforeSend: function() {
+                                        $("#login").html("Validating...");
+                                        console.log("validating");
+                                    },
+                                    complete: function() {
+                                        $("#login").html("Login");
+                                    },
+                                    success: function(response) {
+                                        console.log("success");
+                                        $("#status-msg").html(response);
+                                    }
+                                });
+
+                            });
+
+                        });
+                    </script>
                 </form>
-                <?php
-                require 'includes/connection.php';
-                session_start();
 
-                if (isset($_SESSION["user_login"])) { //check session if the user is already logged in
-                    header("location: student/home.php");
-                }
-
-                if (isset($_POST['btn-login-submit'])) {
-                    $username = $_POST['username']; //username textbox
-                    $password = $_POST['password']; //password textbox
-
-                    //check credentials if found in database
-                    try {
-                        $select_stmt = $conn->prepare("SELECT * FROM udm.students WHERE student_username=:uname"); //prepared selct statement
-                        $select_stmt->execute(array(':uname' => $username)); //execute and bind parameters
-                        $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
-
-                        if ($row !== FALSE) { //if username is found
-                            if (password_verify($password, $row["student_password"])) {
-                                echo "found";
-                            } else {
-                                echo "not found pass";
-                            }
-                        } else {
-                            echo "not found at all";
-                        }
-                    } catch (PDOException $err) {
-                        $err->getMessage();
-                    }
-                }
-
-                ?>
             </div>
         </div>
     </section>
     <footer>
         <p>Copyright All Right Reserved 2021</p>
-        .l
     </footer>
 </body>
 <!-- scripts for bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+<script src="bootstrap5/js/bootstrap.bundle.min.js"></script>
 
 </html>
