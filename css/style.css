@@ -1,0 +1,11 @@
+/* Poppins and DM Serif font */
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital@0;1&display=swap");
+:root {
+  --green: #0b6b09;
+  --gold: #efd314;
+  --darkgray: #181818;
+  --lightgray: #202121;
+}
+body {
+  font-family: "Poppins", serif;
+}

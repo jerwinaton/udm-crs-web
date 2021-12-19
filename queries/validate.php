@@ -10,6 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $response = '<script>$("#status-msg").html("Username or Password was not found in the database.");
     $("#status-msg").addClass("login-status-msg");</script>';
 
+
     //check credentials if found in database
     try {
         $select_stmt = $conn->prepare("SELECT * FROM udm.students WHERE student_username=:uname"); //prepared selct statement
@@ -18,13 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($row != FALSE) { //if username is found
             if (password_verify($password, $row["student_password"])) {
-                echo "found";
-                // $_SESSION["login-msg"] = "";
+                $_SESSION['loggedin'] = true;
             } else {
                 echo $response;
+                $_SESSION['loggedin'] = false;
             }
         } else {
             echo $response;
+            $_SESSION['loggedin'] = false;
         }
     } catch (PDOException $err) {
         $err->getMessage();
