@@ -29,7 +29,7 @@
                     <label for="username" class="align-self-start">Username</label>
                     <input type="text" id="username" name="username" required>
                     <label for="username" class="align-self-start">Password</label>
-                    <input type="text" id="password" name="password" required>
+                    <input type="password" id="password" name="password" required>
                     <input type="submit" class="btn-login-submit" value="Login">
                 </form>
             </div>
