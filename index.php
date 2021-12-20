@@ -25,6 +25,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 <body>
     <h1>hello</h1>
+    <form action="queries/logout.php" method="POST">
+        <button name="btn-logout">logout</button>
+    </form>
 </body>
 
 </html>

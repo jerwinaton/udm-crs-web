@@ -151,8 +151,8 @@
                 <h3>Reset Password</h3>
                 <p id="reset-status-msg"></p>
                 <div class="reset-inputs d-flex flex-column">
-                    <input type="password" id="pass1" placeholder="Enter new password" required>
-                    <input type="password" id="pass2" placeholder="Re-enter new password" required>
+                    <input type="password" id="pass1" name="pass1" placeholder="Enter new password" required>
+                    <input type="password" id="pass2" name="pass2" placeholder="Re-enter new password" required>
                     <div class="d-flex flex-row align-items-center my-2">
                         <input class="me-2" type="checkbox" name="view-password" id="view-password">
                         <label for="view-password">Show Password</label>
