@@ -37,10 +37,12 @@
                                     data: $('form').serialize(),
                                     beforeSend: function() {
                                         $("#proceed").html("Searching...");
+                                        $("#proceed").attr('disable', 'true');
                                         console.log("Searching...");
                                     },
                                     complete: function() {
                                         $("#proceed").html("Proceed");
+                                        $("#proceed").attr('disable', 'false');
                                     },
                                     success: function(response) {
                                         console.log("success");
@@ -71,7 +73,7 @@
         <div class="this-container d-flex flex-column  align-items-center">
             <form class="otp-form">
                 <h3>OTP Verification</h3>
-                <p>We've sent a 6-digit verification code to the email address linked to your account.</p>
+                <p>We've sent a 6-digit verification code to the email address linked to your account <span class="text-decoration-underline" id="username-text"></span>.</p>
                 <div class="inputs d-flex flex-column">
                     <input type="text" id="username" placeholder="Enter verification code" required>
                     <div class="buttons d-flex flex-row justify-content-around">
@@ -83,12 +85,9 @@
 
                     <script>
                         $("#resend").css('display', 'none'); // to hide
-
-
-
                         //resend code
                         $('#resend').click(() => {
-                            // $('.forgot-password-form').submit();
+                            $('.forgot-password-form').submit();
                             $("#resend").css('display', 'none'); // to hide
                             $("#resend-text").css('display', 'block'); // to hide
                             let j = 10;
@@ -104,10 +103,11 @@
                             }
                             const interval2 = setInterval(timer2, 1000)
                         });
-                        // $("#change-username").click(() => {
-                        // $(".otp-form").css("display", "none");
-                        // $(".forgot-password-form").css("display", "block");
-                        // });
+                        $("#change-username").click(() => {
+                            $(".inputs > #username").val("");
+                            $(".otp-form").css("display", "none");
+                            $(".forgot-password-form").css("display", "block");
+                        });
                     </script>
 
             </form>

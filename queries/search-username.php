@@ -22,13 +22,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($row) { //if username is found\
 
             session_start();
-            $response = '<script> $(".otp-form").css("display", "block");
-            $(".forgot-password-form").css("display", "none");</script>';
+            //set session variables
             $_SESSION["student_username"] = $row["student_username"];
             $_SESSION["student_name"] = ucfirst($row["first_name"]);
             $_SESSION["student_email"] = $row["email"];
+
+            $response = '<script> $(".otp-form").css("display", "block");
+            $(".forgot-password-form").css("display", "none");
+            $("#username-text").html("' . $_SESSION["student_username"] . '");
+            </script>';
             echo $response;
-            //sendEmail($conn); //send email function
+            sendEmail($conn); //send email function
         } else {
             echo "fetch failed";
         }
@@ -53,22 +57,84 @@ function sendEmail($conn)
     $content = '
     <!DOCTYPE html>
     <html lang="en">
-    <head>
+      <head>
         <style type="text/css">
-            @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital@0;1&display=swap");
-         </style>
-    </head>
-         <body>
-                <h3>UNIVERSIDAD DE MANILA</h3>
-                <p>Former City College of Manila</p>
-                <p>One Mehans Gardens, Manila, Philippines, 1000</p>
-
-        <p1>Use this 6-digit code to <b>reset your password.</b></p1>
-        <h1>' . $otp . '</h1>
-        <p2>This code will expire in 3 minutes</p2>
+          @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital@0;1&display=swap");
+          table {
+            max-width: 500px;
+            margin: auto auto;
+            text-align: center;
+            font-family: Poppins, sans-serif;
+            border-collapse: collapse;
+          }
+        </style>
+      </head>
+      <table bgcolor="white">
+        <tr>
+          <td bgcolor="#0B6B09" style="color: white; padding: 0 40px">
+            <p
+              style="
+                font-family: DM Serif Display, serif;
+                font-size: 30px;
+                margin-top: 20px;
+                margin-bottom: 0px;
+              "
+            >
+              UNIVERSIDAD DE MANILA
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td bgcolor="#0B6B09">
+            <p
+              style="
+                color: white;
+                margin-bottom: 20px;
+                margin-top: 0px;
+                font-size: 12px;
+              "
+            >
+              Former City College of Manila<br />One Mehans Gardens, Manila,
+              Philippines, 1000
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <p style="margin-top: 20px">
+              Use this 6-digit code to <b>reset your password.</b>
+            </p>
+          </td>
+        </tr>
+        <tr>
+          <td><h1>' . $otp . '</h1></td>
+        </tr>
+        <tr>
+          <td>
+            <p style="margin-bottom: 50px">This code will expire in 3 minutes</p>
+          </td>
+        </tr>
+        <tr>
+          <td style="padding: 10px 0; background: rgb(215, 224, 220)">
+            <a
+              href="https://udm.edu.ph/udm2/"
+              target="_blank"
+              style="margin-right: 30px; color: #0B6B09"
+              >udm.edu.ph</a
+            >
+            <a
+              href="https://web.facebook.com/udmanila"
+              target="_blank"
+              style="color: #0B6B09"
+              >fb: udmmanila</a
+            >
+          </td>
+        </tr>
+      </table>
+      <body></body>
+    </html>
     
-    </body>
-    </html>';
+    ';
     // end of email style
     $expDate = date("Y-m-d H:i:s", $expFormat);
 
