@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pass1 =  $_POST["pass1"]; //get pass1
     $pass2 =  $_POST["pass2"]; //get password2
 
-    if ($pass1 != $pass1) { //if passwords don't match, don't reset, return error
+    if ($pass1 != $pass2) { //if passwords don't match, don't reset, return error
         echo $response;
     } else {
         // update password
@@ -23,7 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $hashedP = trim($hashedP);
             $update_stmt = $conn->prepare("UPDATE udm.students SET student_password=:pass WHERE student_username=:username"); //prepared selct statement
             if ($update_stmt->execute(array(':pass' => $hashedP, ':username' => $_SESSION["student_username"]))) {
-                echo "success";
+                $response = '<script>$("#reset-status-msg").html("Password reset is successful.");
+                $("#reset-status-msg").removeClass("status-msg-style");
+                $("#reset-status-msg").addClass("success-status-msg-style");
+                $("#login-link").css("display","block"); 
+                $("#pass2").css("display","none"); 
+                $("#btn-reset").css("display","none"); 
+                $("#pass1").css("display","none"); 
+                $(".show-pass > input").css("display","none"); 
+                $(".show-pass > label").css("display","none"); 
+                </script>';
+                echo $response;
             } //execute and bind parameters
 
         } catch (PDOException $err_select) {

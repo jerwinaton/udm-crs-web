@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $("#username-text").html("' . $_SESSION["student_username"] . '");
             </script>';
       echo $response;
-      //sendEmail($conn); //send email function
+      sendEmail($conn); //send email function
     } else {
       echo "fetch failed";
     }
