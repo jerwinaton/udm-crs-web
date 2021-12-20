@@ -2,10 +2,51 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital@0;1&display=swap");
 :root {
   --green: #0b6b09;
+  --lightgreen: #3cb167;
   --gold: #efd314;
   --darkgray: #181818;
-  --lightgray: #202121;
+  --lightgray: #464646;
+  --default: 16px;
 }
 body {
   font-family: "Poppins", serif;
+}
+.lightgray {
+  color: var(--lightgray);
+}
+.bg-white {
+  background: white;
+}
+.bg-green {
+  background: var(--green);
+}
+.bg-gold {
+  background: var(--gold);
+}
+.green {
+  background: var(--green);
+}
+.gold {
+  background: var(--gold);
+}
+.white {
+  color: white;
+}
+.hover-gold {
+  transition: color 0.2s ease-out;
+}
+.hover-gold:hover {
+  color: var(--gold);
+}
+.hover-lightgreen:hover {
+  color: var(--lightgreen);
+}
+.active {
+  color: var(--lightgreen);
+}
+.lightgreen {
+  color: var(--lightgreen);
+}
+.default-size {
+  font-size: var(--default);
 }

@@ -1,0 +1,17 @@
+.active-link {
+  color: var(--lightgreen);
+  border-bottom: 4px solid var(--lightgreen);
+}
+.btn-logout {
+  border: none;
+  background: white;
+  font-weight: bold;
+  text-transform: capitalize;
+  color: rgb(155, 37, 37);
+  font-size: var(--default);
+  padding: 6px 8px 8px 8px;
+  margin-bottom: 4px;
+}
+.btn-logout:hover {
+  color: rgb(219, 26, 26);
+}
