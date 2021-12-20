@@ -46,9 +46,22 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     <input type="text" id="username" name="username" required>
                     <label for="username" class="align-self-start">Password</label>
                     <input type="password" id="password" name="password" required>
+                    <div style="width:100%;" class="d-flex flex-row align-items-center my-2">
+                        <input style="width:20px; margin-top:5px;" class="me-2" type="checkbox" name="view-password" id="view-password">
+                        <label for="view-password">Show Password</label>
+                    </div>
                     <button type="submit" class="btn-login-submit" id="login" name="btn-login-submit">Login</button>
                     <a class="forgot-password" href="forms/forgot-password.php">Forgot Password?</a>
                     <script>
+                        // show password
+                        $("#view-password").on('click', function() {
+                            let $pass = $("#password");
+                            if ($pass.attr('type') === 'password') {
+                                $pass.attr('type', 'text');
+                            } else {
+                                $pass.attr('type', 'password');
+                            }
+                        });
                         $(function() {
 
                             $('form').on('submit', function(e) {
