@@ -44,7 +44,7 @@ function sendEmail($conn)
 {
   $otp = rand(1, 999999); //create 6 digit code
 
-  // 3 mins expiration
+  // 5 mins expiration
   $expFormat = mktime(
     date("H"),
     date("i") + 5,
