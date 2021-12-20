@@ -22,8 +22,8 @@
         $options = ['cost' => 4];
         $hashedP = password_hash($password, PASSWORD_BCRYPT, $options);
         $hashedP = trim($hashedP);
-        $select_stmt = $conn->prepare("UPDATE udm.students SET student_password=:pass WHERE student_id=:id"); //prepared selct statement
-        if ($select_stmt->execute(array(':pass' => $hashedP, ':id' => 1))) {
+        $update_stmt = $conn->prepare("UPDATE udm.students SET student_password=:pass WHERE student_id=:id"); //prepared selct statement
+        if ($update_stmt->execute(array(':pass' => $hashedP, ':id' => 1))) {
             echo $hashedP;
             echo "success";
         } //execute and bind parameters

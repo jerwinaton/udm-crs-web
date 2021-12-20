@@ -20,14 +20,60 @@
     <section>
         <div class="this-container d-flex flex-column  align-items-center">
             <a href="../login.php" class="btn-back">&#8592; Back</a>
-            <div class="forgot-password-form">
+            <form action="" method="POST" class="forgot-password-form">
                 <h3>Forgot Password</h3>
+                <!--username search status message if error logging in-->
+                <p id="status-msg"></p>
                 <div class="inputs d-flex flex-column">
-                    <label for="username">Enter your username</label>
-                    <input type="text" id="username" required>
-                    <button type="submit">Proceed</button>
-                </div>
-            </div>
+                    <input type="text" id="username" name="username" placeholder="Enter username" required>
+                    <button type="submit" id="proceed">Proceed</button>
+                    <script>
+                        $(function() {
+                            $('form').on('submit', function(e) {
+                                e.preventDefault();
+                                $.ajax({
+                                    type: 'post',
+                                    url: '../queries/search-username.php',
+                                    data: $('form').serialize(),
+                                    beforeSend: function() {
+                                        $("#proceed").html("Searching...");
+                                        console.log("Searching...");
+                                    },
+                                    complete: function() {
+                                        $("#proceed").html("Proceed");
+                                    },
+                                    success: function(response) {
+                                        console.log("success");
+                                        $("#status-msg").html(response);
+                                    }
+                                });
+
+                            });
+
+                        });
+                    </script>
+            </form>
+        </div>
+        <div class="this-container d-flex flex-column  align-items-center">
+            <form class="otp-form">
+                <h3>OTP Verification</h3>
+                <p>We've sent a 6-digit verification code to the email address linked to your account.</p>
+                <div class="inputs d-flex flex-column">
+                    <input type="text" id="username" placeholder="Enter verification code" required>
+                    <div class="buttons d-flex flex-row justify-content-around">
+                        <a href="#" id="change-username">Change Username</a>
+                        <button type="submit">Proceed</button>
+                    </div>
+                    <a href="#" id="resend">Resend Code <span id="timer"></span></a>
+                    <script>
+                        // $("#change-username").click(() => {
+                        //     $(".otp-form").css("display", "none");
+                        //     $(".forgot-password-form").css("display", "block");
+                        // });
+                    </script>
+
+            </form>
+        </div>
         </div>
     </section>
 

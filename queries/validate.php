@@ -3,7 +3,7 @@ require '../includes/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_SESSION["user_login"])) { //check session if the user is already logged in
-        header("location: student/home.php");
+        header("location: index.php");
     }
     $username = $_POST['username']; //username textbox
     $password = $_POST['password']; //password textbox

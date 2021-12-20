@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ=="crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <style type="text/css">
+            @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital@0;1&display=swap");
+            body{
+                max-width: 600px;
+                margin-inline: auto;
+            }
+            header {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                background: #0B6B09;
+                padding: 10px;
+                color: white;
+            }
+    
+            div {
+                display: flex;
+                flex-direction: column;
+            }
+    
+            h3 {
+                font-family: "DM Serif Display", serif;
+                margin: 0;
+            }
+    
+            p {
+                font-family: Poppins, sans-serif;
+                margin: 0;
+                font-size: .8rem
+            }
+    
+            img {
+                margin-right: 5px;
+            }
+    
+            /* body*/
+            h1 {
+                padding: 20px;
+                border: 1px solid #0B6B09;
+                text-align: center;
+                background: #f0fff3;
+                max-width: 300px;
+                margin-inline: auto;
+            }
+    
+            p1,
+            p2 {
+                text-align: center;
+                margin: 20px;
+                display: block;
+                font-size: 1rem;
+                font-family: Poppins, sans-serif;
+            }
+    
+            footer {
+                padding: 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                font-family: Poppins, sans-serif;
+            }
+    
+            footer {
+                width: 100%;
+                margin-top: 30px;
+            }
+    
+            footer>div .logo-text {
+                display: flex;
+                flex-direction: column;
+            }
+    
+            footer>div>.logo-text {
+                font-size: 3px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="../assets/images/udm_logo_300px.png" width="70px" height="70px">
+            <div>
+                <h3>UNIVERSIDAD DE MANILA</h3>
+                <p>Former City College of Manila</p>
+                <p>One Mehans Gardens, Manila, Philippines, 1000</p>
+                <div>
+        </header>
+    
+        <p1>Use this 6-digit code to <b>reset your password.</b></p1>
+        <h1>' . $otp . '</h1>
+        <p2>This code will expire in 3 minutes</p2>
+    
+    <footer>
+        <div>
+            <a style="display:flex; flex-direction: row; text-decoration: none; color: #333333;"href="https://udm.edu.ph/udm2/" target="_blank">
+                <img src="../assets/images/udm_logo_300px.png" width="30px" height="30px">
+                <div class="logo-text">
+                    <h3 style="font-size: .8rem;">UNIVERSIDAD DE MANILA</h3>
+                    <p style="font-size: .7rem;">Former City College of Manila</p>
+                </div>
+            </a>
+        </div>
+        <div><a style="text-decoration: none;font-size:1rem; color: #333333;font-style:normal;" href="https://web.facebook.com/udmanila" target="_blank"><i class="fab fa-facebook"></i> facebook</a></div>
+    </footer>
+    </body>
+    </html>

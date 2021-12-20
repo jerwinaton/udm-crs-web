@@ -1,6 +1,0 @@
-green - 0B6B09
-gold - EFD314
-darkgray - 181818
-light gray - 202121
-
-Poppins, sans serif
