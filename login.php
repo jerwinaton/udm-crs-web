@@ -45,7 +45,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                     <label for="username" class="align-self-start">Username</label>
                     <input type="text" id="username" name="username" required>
                     <label for="username" class="align-self-start">Password</label>
-                    <input type="password" id="password" name="password" required>
+                    <input type="password" id="password" name="password" autocomplete="off" required>
                     <div style="width:100%;" class="d-flex flex-row align-items-center my-2">
                         <input style="width:20px; margin-top:5px;" class="me-2" type="checkbox" name="view-password" id="view-password">
                         <label for="view-password">Show Password</label>
