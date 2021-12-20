@@ -56,7 +56,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                                     success: function(response) {
                                         console.log("success");
                                         $("#status-msg").html(response);
-                                        let i = 10;
+                                        let i = 160;
 
                                         function timer() {
 
@@ -102,7 +102,7 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             $('.forgot-password-form').submit();
                             $("#resend").css('display', 'none'); // to hide
                             $("#resend-text").css('display', 'block'); // to hide
-                            let j = 10;
+                            let j = 160;
 
                             function timer2() {
                                 j = j - 1;
