@@ -7,7 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 require '../includes/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_SESSION["user_login"])) { //check session if the user is already logged in
+    if (isset($_SESSION["loggedin"])) { //check session if the user is already logged in
         header("location: index.php");
     }
     $username = $_POST['username']; //username textbox
@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $("#username-text").html("' . $_SESSION["student_username"] . '");
             </script>';
             echo $response;
-            sendEmail($conn); //send email function
+            //sendEmail($conn); //send email function
         } else {
             echo "fetch failed";
         }

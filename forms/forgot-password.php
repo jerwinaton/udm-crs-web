@@ -18,8 +18,9 @@
 
 <body>
     <section>
+        <!-- fisrt form to show , enter username -->
         <div class="this-container d-flex flex-column  align-items-center">
-            <a href="../login.php" class="btn-back">&#8592; Back</a>
+            <a href="../login.php" class="btn-back">&#8592; Login</a>
             <form action="" method="POST" class="forgot-password-form">
                 <h3>Forgot Password</h3>
                 <!--username search status message if error logging in-->
@@ -29,7 +30,7 @@
                     <button type="submit" id="proceed">Proceed</button>
                     <script>
                         $(function() {
-                            $('form').on('submit', function(e) {
+                            $('.forgot-password-form').on('submit', function(e) {
                                 e.preventDefault();
                                 $.ajax({
                                     type: 'post',
@@ -69,16 +70,19 @@
                         });
                     </script>
             </form>
+            <!-- end of fisrt form to show , enter username -->
         </div>
+        <!-- 2nd form to show , enter 6-digit code -->
         <div class="this-container d-flex flex-column  align-items-center">
             <form class="otp-form">
                 <h3>OTP Verification</h3>
                 <p>We've sent a 6-digit verification code to the email address linked to your account <span class="text-decoration-underline" id="username-text"></span>.</p>
+                <p id="verify-status-msg"></p>
                 <div class="inputs d-flex flex-column">
-                    <input type="text" id="username" placeholder="Enter verification code" required>
+                    <input type="text" id="code" name="enteredCode" placeholder="Enter verification code" required>
                     <div class="buttons d-flex flex-row justify-content-around">
                         <a href="#" id="change-username">Change Username</a>
-                        <button type="submit">Proceed</button>
+                        <button type="submit" id="submit">Submit</button>
                     </div>
                     <p id="resend-text" class="text-center mt-4">Resend Code in <span id="timer"></span></p>
                     <a href="#" id="resend">Resend Code <span id="timer"></span></a>
@@ -103,16 +107,101 @@
                             }
                             const interval2 = setInterval(timer2, 1000)
                         });
+                        // change usernamne button click, hide current form, show enter username form
                         $("#change-username").click(() => {
                             $(".inputs > #username").val("");
                             $(".otp-form").css("display", "none");
                             $(".forgot-password-form").css("display", "block");
                         });
+
+                        //veerify code
+                        $(function() {
+                            $('.otp-form').on('submit', function(e) {
+                                e.preventDefault();
+                                $.ajax({
+                                    type: 'post',
+                                    url: '../queries/verify-code.php',
+                                    data: $('form').serialize(),
+                                    beforeSend: function() {
+                                        $("#submit").html("Verifying...");
+                                        $("#submit").attr('disable', 'true');
+                                        console.log("Verifying...");
+                                    },
+                                    complete: function() {
+                                        $("#submit").html("Proceed");
+                                        $("#submit").attr('disable', 'false');
+                                    },
+                                    success: function(response) {
+
+                                        $("#verify-status-msg").html(response);
+                                    }
+                                });
+
+                            });
+
+                        });
                     </script>
 
             </form>
         </div>
+        <!-- end of 2nd form to show , enter 6-digit code -->
+        <!-- 3rd page to show, reset password -->
+        <div class="this-container d-flex flex-column  align-items-center">
+            <form class="reset-form">
+                <h3>Reset Password</h3>
+                <p id="reset-status-msg"></p>
+                <div class="reset-inputs d-flex flex-column">
+                    <input type="password" id="pass1" placeholder="Enter new password" required>
+                    <input type="password" id="pass2" placeholder="Re-enter new password" required>
+                    <div class="d-flex flex-row align-items-center my-2">
+                        <input class="me-2" type="checkbox" name="view-password" id="view-password">
+                        <label for="view-password">Show Password</label>
+                    </div>
+                    <button type="submit" id="btn-reset">Reset</button>
+                    <script>
+                        // show password script
+                        $("#view-password").on('click', function() {
+                            let $pass1 = $("#pass1");
+                            let $pass2 = $("#pass2");
+
+                            if ($pass1.attr('type') === 'password') {
+                                $pass1.attr('type', 'text');
+                                $pass2.attr('type', 'text');
+                            } else {
+                                $pass1.attr('type', 'password');
+                                $pass2.attr('type', 'password');
+                            }
+                        });
+                        $(function() {
+                            $('.reset-form').on('submit', function(e) {
+                                e.preventDefault();
+                                $.ajax({
+                                    type: 'post',
+                                    url: '../queries/reset-password.php',
+                                    data: $('form').serialize(),
+                                    beforeSend: function() {
+                                        $("#btn-reset").html("Searching...");
+                                        $("#btn-reset").attr('disable', 'true');
+                                        console.log("Searching...");
+                                    },
+                                    complete: function() {
+                                        $("#btn-reset").html("Proceed");
+                                        $("#btn-reset").attr('disable', 'false');
+                                    },
+                                    success: function(response) {
+                                        console.log("success");
+                                        $("#reset-status-msg").html(response);
+
+                                    }
+                                });
+
+                            });
+
+                        });
+                    </script>
+            </form>
         </div>
+        <!-- end of 3rd form to show, reset passsword -->
     </section>
 
 </body>
