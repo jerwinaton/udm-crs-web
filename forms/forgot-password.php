@@ -45,6 +45,20 @@
                                     success: function(response) {
                                         console.log("success");
                                         $("#status-msg").html(response);
+                                        let i = 10;
+
+                                        function timer() {
+
+                                            i = i - 1;
+                                            $("#timer").html(i + 's');
+                                            if (i == 0) {
+                                                $("#resend").css('display', 'block'); // to hide
+                                                $("#resend-text").css('display', 'none'); // to hide
+                                                clearInterval(interval)
+                                            }
+                                        }
+                                        const interval = setInterval(timer, 1000)
+
                                     }
                                 });
 
@@ -69,20 +83,27 @@
 
                     <script>
                         $("#resend").css('display', 'none'); // to hide
-                        let i = 3;
 
-                        function timer() {
-                            i = i - 1;
-                            $("#timer").html(i + 's');
-                            if (i == 0) {
-                                $("#resend").css('display', 'block'); // to hide
-                                $("#resend-text").css('display', 'none'); // to hide
-                                clearInterval(interval)
+
+
+                        //resend code
+                        $('#resend').click(() => {
+                            // $('.forgot-password-form').submit();
+                            $("#resend").css('display', 'none'); // to hide
+                            $("#resend-text").css('display', 'block'); // to hide
+                            let j = 10;
+
+                            function timer2() {
+                                j = j - 1;
+                                $("#timer").html(j + 's');
+                                if (j == 0) {
+                                    $("#resend").css('display', 'block'); // to hide
+                                    $("#resend-text").css('display', 'none'); // to hide
+                                    clearInterval(interval2)
+                                }
                             }
-                        }
-                        const interval = setInterval(timer, 1000)
-
-
+                            const interval2 = setInterval(timer2, 1000)
+                        });
                         // $("#change-username").click(() => {
                         // $(".otp-form").css("display", "none");
                         // $(".forgot-password-form").css("display", "block");
