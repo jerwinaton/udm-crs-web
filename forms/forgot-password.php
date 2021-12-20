@@ -157,6 +157,9 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
         <div class="this-container d-flex flex-column  align-items-center">
             <form class="reset-form">
                 <h3>Reset Password</h3>
+                <p>Password must be at least 8 characters or longer.</p>
+                <p>At least one uppercase (A-Z) and one lowercase (a-z).</p>
+                <p>At least one number (0-9) and symbol like (@$!%*#?&).</p>
                 <p id="reset-status-msg"></p>
                 <div class="reset-inputs d-flex flex-column">
                     <input type="password" id="pass1" name="pass1" placeholder="Enter new password" required>

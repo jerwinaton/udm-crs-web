@@ -141,7 +141,6 @@ function sendEmail($conn)
   try {
     $update_stmt = $conn->prepare("UPDATE udm.students SET otp=:otp, expDate=:expDate WHERE student_username=:username"); //prepared update statement
     if ($update_stmt->execute(array(':otp' => strval($otp), ':expDate' => $expDate, ':username' => $_SESSION["student_username"]))) {
-      echo "updated";
       require '../vendor/phpmailer/phpmailer/src/Exception.php';
       require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
       require '../vendor/phpmailer/phpmailer/src/SMTP.php';
@@ -166,7 +165,7 @@ function sendEmail($conn)
       $mail->Subject  =  'Reset Password - Universidad de Manila CRS';
       $mail->IsHTML(true);
       $mail->Body    = $content;
-      $mail->send(); //send
+      //$mail->send(); //send
       // if ($mail->Send()) {
       //     echo "Check Your Email and Click on the link sent to your email";
       // } else {

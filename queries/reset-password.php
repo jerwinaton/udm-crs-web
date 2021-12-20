@@ -14,6 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($pass1 != $pass2) { //if passwords don't match, don't reset, return error
         echo $response;
+    } else if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W\_])[A-Za-z\d\W\_]{8,}$/", $pass1)) {
+        echo '<script>$("#reset-status-msg").html("Password does not meet the requirements!");
+        $("#reset-status-msg").addClass("status-msg-style");</script>';
     } else {
         // update password
         try {
