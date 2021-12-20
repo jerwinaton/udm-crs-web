@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $_SESSION["student_email"] = $row["email"];
             echo $response;
 
-            sendEmail($conn); //send email function
+            // sendEmail($conn); //send email function
         } else {
             echo "fetch failed";
         }

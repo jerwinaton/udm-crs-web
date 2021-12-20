@@ -64,11 +64,28 @@
                         <a href="#" id="change-username">Change Username</a>
                         <button type="submit">Proceed</button>
                     </div>
+                    <p id="resend-text" class="text-center mt-4">Resend Code in <span id="timer"></span></p>
                     <a href="#" id="resend">Resend Code <span id="timer"></span></a>
+
                     <script>
+                        $("#resend").css('display', 'none'); // to hide
+                        let i = 3;
+
+                        function timer() {
+                            i = i - 1;
+                            $("#timer").html(i + 's');
+                            if (i == 0) {
+                                $("#resend").css('display', 'block'); // to hide
+                                $("#resend-text").css('display', 'none'); // to hide
+                                clearInterval(interval)
+                            }
+                        }
+                        const interval = setInterval(timer, 1000)
+
+
                         // $("#change-username").click(() => {
-                        //     $(".otp-form").css("display", "none");
-                        //     $(".forgot-password-form").css("display", "block");
+                        // $(".otp-form").css("display", "none");
+                        // $(".forgot-password-form").css("display", "block");
                         // });
                     </script>
 
