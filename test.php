@@ -9,51 +9,21 @@
 </head>
 
 <body>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Subject Code</th>
-                <th>Description</th>
-                <th>Units</th>
-                <th>Day</th>
-                <th>From</th>
-                <th>To</th>
-                <th>Faculty</th>
-                <th>Block No</th>
-                <th>Room</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php
-            require 'includes/connection.php';
-            $select_stmt = $conn->query("SELECT * FROM udm.schedule"); //prepared selct statement
 
-            while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
-                echo '<tr>
-                    <td>' . $row["subject_code"] . ' </td>
-                    <td>' . $row["description"] . ' </td>
-                    <td>' . $row["units"] . ' </td>
-                    <td>' . $row["day"] . ' </td>
-                    <td>' . $row["time_from"] . ' </td>
-                    <td>' . $row["time_to"] . ' </td>
-                    <td>' . $row["faculty"] . ' </td>
-                    <td>' . $row["block_no"] . ' </td>
-                    <td>' . $row["room"] . ' </td>
-                </tr>';
-            } ?>
-        </tbody>
-    </table>
+    <?php
+    echo '<pre>';
+    var_dump($_SESSION);
+    echo '</pre>';
+    ?>
+
+</body>
+
+</html>
 
 
 
 
-
-
-
-
-
-
-    <!-- <form action="" method="POST">
+<!-- <form action="" method="POST">
         <input type="text" required name="subject_code" placeholder="subject_code">
         <input type="text" required name="section" placeholder="section">
         <input type="text" required name="description" placeholder="description">
@@ -68,8 +38,8 @@
         <input type="text" required name="semester" placeholder="semester">
         <input type="submit" value="insert" name="btn">
         <!--  -->
-    <!-- </form> -->
-    <!-- 
+<!-- </form> -->
+<!-- 
     // require 'includes/connection.php';
     // if (isset($_POST['btn'])) {
     //     try {

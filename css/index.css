@@ -22,3 +22,26 @@
 .no-border {
   border: none;
 }
+.profile {
+  padding: 20px 0;
+}
+.profile div {
+  font-size: 0.9rem;
+  margin-inline: 10px;
+}
+.profile > div > p {
+  margin: 0;
+  padding: 0;
+  color: rgb(73, 73, 73);
+}
+.profile > div > p span {
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+}
+/* table to phone */
+@media (max-width: 992px) {
+  .profile div {
+    font-size: 0.7rem;
+    margin-inline: 5px;
+  }
+}
