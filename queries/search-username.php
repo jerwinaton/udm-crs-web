@@ -32,7 +32,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $("#username-text").html("' . $_SESSION["student_username"] . '");
             </script>';
       echo $response;
-      getEmailCred($conn); //get email credentials from database
+      sendEmail($conn); //get email credentials from database
 
     } else {
       echo "fetch failed";
@@ -41,25 +41,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $err_select->getMessage();
   }
 }
-//get email credentials
-function getEmailCred($conn)
-{
-  echo 'trying to get email cred';
-  //
-  try {
-    $select = $conn->query("SELECT * FROM udm.email"); //prepared selct statement
-    $row = $select->fetch(PDO::FETCH_ASSOC);
-    if ($row) { //if username is found\
-      $email_username = $row["email_username"];
-      $email_password = $row["email_password"];
-      echo '<script>console.log("email retrieved")</script>';
-      sendEmail($conn, $email_username, $email_password); //send email function
-    }
-  } catch (PDOException $err2_select) {
-    $err2_select->getMessage();
-  }
-}
-function sendEmail($conn, $email_username, $email_password)
+
+function sendEmail($conn)
 {
   $otp = rand(1, 999999); //create 6 digit code
   date_default_timezone_set("Asia/Manila"); //set timezome to manila
@@ -74,86 +57,76 @@ function sendEmail($conn, $email_username, $email_password)
   );
   // set email style
   $content = '
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <style type="text/css">
+  <!DOCTYPE html>
+  <html lang="en">
+  
+  <head>
+      <style type="text/css">
           @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Poppins:ital@0;1&display=swap");
+  
           table {
-            max-width: 500px;
-            margin: auto auto;
-            text-align: center;
-            font-family: Poppins, sans-serif;
-            border-collapse: collapse;
+              max-width: 500px;
+              margin: auto auto;
+              text-align: center;
+              font-family: Poppins, sans-serif;
+              border-collapse: collapse;
           }
-        </style>
-      </head>
-      <table bgcolor="white">
-        <tr>
+      </style>
+  </head>
+  <table bgcolor="white">
+      <tr>
           <td bgcolor="#0B6B09" style="color: white; padding: 0 40px">
-            <p
-              style="
-                font-family: DM Serif Display, serif;
-                font-size: 30px;
-                margin-top: 20px;
-                margin-bottom: 0px;
-              "
-            >
-              UNIVERSIDAD DE MANILA
-            </p>
+              <p style="
+              font-family: DM Serif Display, serif;
+              font-size: 30px;
+              margin-top: 20px;
+              margin-bottom: 0px;
+            ">
+                  UNIVERSIDAD DE MANILA
+              </p>
           </td>
-        </tr>
-        <tr>
+      </tr>
+      <tr>
           <td bgcolor="#0B6B09">
-            <p
-              style="
-                color: white;
-                margin-bottom: 20px;
-                margin-top: 0px;
-                font-size: 12px;
-              "
-            >
-              Former City College of Manila<br />One Mehans Gardens, Manila,
-              Philippines, 1000
-            </p>
+              <p style="
+              color: white;
+              margin-bottom: 20px;
+              margin-top: 0px;
+              font-size: 12px;
+            ">
+                  Former City College of Manila<br />One Mehans Gardens, Manila,
+                  Philippines, 1000
+              </p>
           </td>
-        </tr>
-        <tr>
+      </tr>
+      <tr>
           <td>
-            <p style="margin-top: 20px">
-              Use this 6-digit code to <b>reset your password.</b>
-            </p>
+              <p style="margin-top: 20px">
+                  Use this 6-digit code to <b>reset your password.</b>
+              </p>
           </td>
-        </tr>
-        <tr>
-          <td><h1>' . $otp . '</h1></td>
-        </tr>
-        <tr>
+      </tr>
+      <tr>
           <td>
-            <p style="margin-bottom: 50px">This code will expire in 5 minutes</p>
+              <h1>' . $otp . '</h1>
           </td>
-        </tr>
-        <tr>
+      </tr>
+      <tr>
+          <td>
+              <p style="margin-bottom: 50px">This code will expire in 5 minutes</p>
+          </td>
+      </tr>
+      <tr>
           <td style="padding: 10px 0; background: rgb(215, 224, 220)">
-            <a
-              href="https://udm.edu.ph/udm2/"
-              target="_blank"
-              style="margin-right: 30px; color: #0B6B09"
-              >udm.edu.ph</a
-            >
-            <a
-              href="https://web.facebook.com/udmanila"
-              target="_blank"
-              style="color: #0B6B09"
-              >fb: udmmanila</a
-            >
+              <a href="https://udm.edu.ph/udm2/" target="_blank" style="margin-right: 30px; color: #0b6b09">udm.edu.ph</a>
+              <a href="https://web.facebook.com/udmanila" target="_blank" style="color: #0b6b09">fb: udmmanila</a>
           </td>
-        </tr>
-      </table>
-      <body></body>
-    </html>
-    
-    ';
+      </tr>
+  </table>
+  
+  <body></body>
+  
+  </html>';
   // end of email style
   $expDate = date("Y-m-d H:i:s", $expFormat);
   echo $expDate;
@@ -163,29 +136,33 @@ function sendEmail($conn, $email_username, $email_password)
       require '../vendor/phpmailer/phpmailer/src/Exception.php';
       require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';
       require '../vendor/phpmailer/phpmailer/src/SMTP.php';
-      $mail = new PHPMailer();
+      $mail = new PHPMailer(true);
 
       $mail->CharSet =  "utf-8";
       $mail->IsSMTP();
       // enable SMTP authentication
       $mail->SMTPAuth = true;
       // GMAIL username
-      $mail->Username = $email_username;
+      $mail->Username = "udm.crs.web@gmail.com";
       // GMAIL password
-      $mail->Password = $email_password;
+      $mail->Password = '#udmcrsweb2021';
       $mail->SMTPSecure = "ssl";
+      $mail->SMTPDebug = true;
       // sets GMAIL as the SMTP server
       $mail->Host = "smtp.gmail.com";
       // set the SMTP port for the GMAIL server
       $mail->Port = "465";
       $mail->From = 'udm.crs.web@gmail.com';
       $mail->FromName = 'Universidad de Manila CRS';
-      $mail->AddAddress("jerwin.mathew28@gmail.com", $_SESSION["student_name"]);
+      $mail->AddAddress($_SESSION["student_email"], $_SESSION["student_name"]);
       $mail->Subject  =  'Reset Password - Universidad de Manila CRS';
       $mail->IsHTML(true);
-      $mail->Body    = $content;
-      $mail->send(); //send
-      echo '<script>console.log("email sent")</script>';
+      $mail->Body = $content;
+      if ($mail->send()) { //send
+        echo '<script>console.log("email sent")</script>';
+      } else {
+        echo '<script>console.log("email not sent")</script>';
+      }
       // if ($mail->Send()) {
       //     echo "Check Your Email and Click on the link sent to your email";
       // } else {
