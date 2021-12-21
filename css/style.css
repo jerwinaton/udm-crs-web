@@ -122,6 +122,11 @@ body {
     background: var(--lightgreen);
     color: white;
   }
+  .active-link:hover {
+    background: var(--lightgreen);
+    color: white;
+    opacity: 0.9;
+  }
   .navbar-collapse {
     position: fixed;
     top: 76px;
