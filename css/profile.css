@@ -14,6 +14,29 @@
   font-weight: bold;
   color: rgb(0, 0, 0);
 }
+/* section profile */
+
+.container-form {
+  width: 60%;
+  margin-inline: auto;
+}
+.profile-form label {
+  font-size: 0.7rem;
+}
+.seperate1,
+.seperate2,
+.seperate3,
+.seperate4 {
+  background: rgb(215, 229, 247);
+  padding: 20px;
+  box-shadow: 0px 2px 10px 0px rgba(102, 102, 102, 0.1);
+  -webkit-box-shadow: 0px 2px 10px 0px rgba(102, 102, 102, 0.1);
+  -moz-box-shadow: 0px 2px 10px 0px rgba(102, 102, 102, 0.1);
+  margin-top: 5px;
+}
+.seperate4 {
+  margin-bottom: 50px;
+}
 /* table to phone */
 @media (max-width: 992px) {
   .profile div {

@@ -20,7 +20,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     <!-- global css -->
     <link rel="stylesheet" href="css/style.css">
     <!-- login page css only -->
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/profile.css">
 </head>
 
 <body>
