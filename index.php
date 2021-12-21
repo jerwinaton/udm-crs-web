@@ -35,7 +35,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             <div class="collapse bg-white navbar-collapse " id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-end ">
                     <li class="nav-item mx-2">
-                        <a class="nav-link active-link lightgray hover-lightgreen " aria-current="page" href="#">Home</a>
+                        <a class="nav-link announcements-link lightgray hover-lightgreen " aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item mx-2">
                         <a class="nav-link lightgray hover-lightgreen" href="#">View Schedule</a>
@@ -54,7 +54,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <button class="btn-logout" name="btn-logout">logout</button>
                         </form>
                     </li>
-
+                    <!-- script to add style on current link -->
+                    <script>
+                        $(".announcements-link").addClass("active-link");
+                    </script>
                 </ul>
             </div>
         </div>
