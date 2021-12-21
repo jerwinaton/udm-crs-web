@@ -39,6 +39,18 @@
 }
 /* table to phone */
 @media (max-width: 992px) {
+  .container-form {
+    width: 80%;
+  }
+  .profile div {
+    font-size: 0.7rem;
+    margin-inline: 5px;
+  }
+}
+@media (max-width: 768px) {
+  .container-form {
+    width: 90%;
+  }
   .profile div {
     font-size: 0.7rem;
     margin-inline: 5px;
