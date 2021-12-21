@@ -81,16 +81,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <p>January 17, 2022</p>
                     </div>
                 </div>
-
-
-
-
-
-
-
             </div>
-
-
         </div>
     </section>
 
