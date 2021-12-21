@@ -18,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($row != FALSE) { //if username is found
             if (password_verify($password, $row["student_password"])) {
                 $_SESSION["loggedin"] = true;
+                $_SESSION["student_username"] = $row["student_username"];
                 echo '<script>location.reload();</script>';
             } else {
                 echo $response;

@@ -1,25 +1,3 @@
-.active-link {
-  color: var(--lightgreen);
-  border-bottom: 4px solid var(--lightgreen);
-  margin-bottom: -4px;
-}
-.btn-logout {
-  border: none;
-  background: white;
-  font-weight: bold;
-  text-transform: capitalize;
-  color: rgb(155, 37, 37);
-  font-size: var(--default);
-  padding: 6px 8px 8px 8px;
-  margin-bottom: 1px;
-}
-.btn-logout:hover {
-  color: rgb(219, 26, 26);
-}
-.nav-link-custom {
-  padding: 8px;
-  text-decoration: none;
-}
 /* ANNOUNCEMENTS ============================*/
 .announcements {
   background: rgb(231, 243, 239);
@@ -29,13 +7,6 @@
   font-weight: bold;
 }
 .card-custom {
-  border-radius: 5px;
-  padding: 20px 20px 20px 40px;
-  background: white;
-  margin: 10px;
-  box-shadow: 0px 2px 20px 0px rgba(102, 102, 102, 0.1);
-  -webkit-box-shadow: 0px 2px 20px 0px rgba(102, 102, 102, 0.1);
-  -moz-box-shadow: 0px 2px 20px 0px rgba(102, 102, 102, 0.1);
   border-left: 4px solid var(--lightgreen);
 }
 .card-custom h3 {
@@ -47,46 +18,4 @@
 .card-custom p {
   color: rgb(73, 73, 73);
   font-size: 0.9rem;
-}
-.gold {
-  background: linear-gradient(to bottom, rgb(252, 222, 56), var(--gold));
-  border: none;
-}
-/* custom slide of navbar */
-@media (max-width: 992px) {
-  .navbar-nav {
-    margin-inline: 0;
-    margin-right: -30px;
-  }
-  .navbar-nav > li {
-    width: 100%;
-    text-align: center;
-  }
-  .active-link {
-    background: var(--lightgreen);
-    color: white;
-  }
-  .navbar-collapse {
-    position: fixed;
-    top: 76px;
-    right: 0;
-    padding-left: 8px;
-
-    width: 50%;
-    height: 100%;
-  }
-
-  .navbar-collapse.collapsing {
-    right: -75%;
-    transition: height 0s ease;
-  }
-
-  .navbar-collapse.show {
-    right: 0;
-    transition: right 300ms ease-in-out;
-  }
-
-  .navbar-toggler.collapsed ~ .navbar-collapse {
-    transition: right 500ms ease-in-out;
-  }
 }

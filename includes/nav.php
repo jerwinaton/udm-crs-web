@@ -13,19 +13,19 @@ echo '<nav class="navbar fixed-top navbar-expand-lg bg-white fw-bold  default-si
                 <a class="nav-link announcements-link lightgray hover-lightgreen" aria-current="page" href="index.php">Home</a>
             </li>
             <li class="nav-item mx-2">
-                <a class="nav-link lightgray hover-lightgreen" href="view-schedule.php">View Schedule</a>
+                <a class="nav-link lightgray view-schedule-link hover-lightgreen" href="view-schedule.php">View Schedule</a>
             </li>
             <li class="nav-item mx-2 ">
-                <a class="nav-link lightgray hover-lightgreen " aria-current="page" href="view-grades.php">View Grades</a>
+                <a class="nav-link lightgray view-grades-link hover-lightgreen " aria-current="page" href="view-grades.php">View Grades</a>
             </li>
             <li class="nav-item mx-2">
-                <a class="nav-link lightgray hover-lightgreen" href="profile.php">Profile</a>
+                <a class="nav-link lightgray profile-link hover-lightgreen" href="profile.php">Profile</a>
             </li>
             <li class="nav-item mx-2">
-                <a class="nav-link nav-link lightgray hover-lightgreen" href="change-password.php">Password</a>
+                <a class="nav-link nav-link password-link lightgray hover-lightgreen" href="change-password.php">Password</a>
             </li>
             <li class="nav-item mx-2">
-                <form action="../queries/logout.php" class="d-flex justify-content-center align-items-center" style="height:100%;" method="POST">
+                <form action="queries/logout.php" class="d-flex justify-content-center align-items-center" style="height:100%;" method="POST">
                     <button class="btn-logout" name="btn-logout">logout</button>
                 </form>
             </li>

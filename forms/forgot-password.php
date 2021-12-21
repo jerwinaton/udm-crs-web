@@ -192,9 +192,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                                     url: '../queries/reset-password.php',
                                     data: $('form').serialize(),
                                     beforeSend: function() {
-                                        $("#btn-reset").html("Searching...");
+                                        $("#btn-reset").html("Validating...");
                                         $("#btn-reset").attr('disable', 'true');
-                                        console.log("Searching...");
                                     },
                                     complete: function() {
                                         $("#btn-reset").html("Proceed");
