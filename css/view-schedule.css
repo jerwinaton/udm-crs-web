@@ -5,11 +5,21 @@
   background: linear-gradient(to bottom, rgb(13, 126, 202), rgb(32, 77, 202));
   color: white;
 }
-.sy-sem {
+.active-sched {
   padding: 10px 0;
   background: linear-gradient(to bottom, var(--lightgreen), rgb(1, 156, 1));
   color: white;
   border-radius: 5px;
+}
+.old-sched {
+  padding: 10px 0;
+  color: white;
+  border-radius: 5px;
+  background: linear-gradient(
+    to bottom,
+    rgb(145, 145, 145),
+    rgb(107, 107, 107)
+  );
 }
 /* table gold and green colord for time */
 .table > thead > tr > th:nth-child(6) {
@@ -30,7 +40,10 @@
 }
 /* for tablet to mobile phone view */
 @media (max-width: 992px) {
-  .table1 {
+  .table1,
+  .table2,
+  .table3,
+  .table4 {
     font-size: 0.6rem;
     color: var(--green);
     min-width: 400px;

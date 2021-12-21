@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <p class="text-center fw-bold mt-4 sy-sem">School Year: <span id="sy1"></span> | Semester: <span id="sem1"></span> </p>
+                    <p class="text-center fw-bold mt-4 active-sched">School Year: <span id="sy1"></span> | Semester: <span id="sem1"></span> </p>
                     <table class="table table-striped text-center table1"">
                         <thead>
                             <tr>
@@ -77,7 +77,7 @@
                 <hr>
                 <!-- end of table div -->
                 <div class=" col-12 ">
-                        <p class=" text-center fw-bold mt-5 sy-sem">School Year: <span id="sy2"></span> | Semester: <span id="sem2"></span> </p>
+                        <p class=" text-center fw-bold mt-5 old-sched">School Year: <span id="sy2"></span> | Semester: <span id="sem2"></span> </p>
                         <table class="table table-striped text-center table2"">
                         <thead>
                             <tr>
@@ -118,6 +118,95 @@
                         </tbody>
                     </table>
                 </div>
+                <hr>
+                <!-- end of table div -->
+                <div class=" col-12 ">
+                        <p class=" text-center fw-bold mt-5 old-sched"">School Year: <span id="sy3"></span> | Semester: <span id="sem3"></span> </p>
+                            <table class="table table-striped text-center table3"">
+                        <thead>
+                            <tr>
+                                <th>Subject Code</th>
+                                <th>Description</th>
+                                <th>Units</th>
+                                <th>Day</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Faculty</th>
+                                <th>Block No</th>
+                                <th>Room</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            require 'includes/connection.php';
+                            $select_stmt = $conn->query("SELECT * FROM udm.schedule WHERE school_year='2020-2021' AND semester='2nd'"); //prepared selct statement
+
+                            while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<tr>
+                                        <td>' . $row["subject_code"] . ' </td>
+                                        <td>' . $row["description"] . ' </td>
+                                        <td>' . $row["units"] . ' </td>
+                                        <td>' . $row["day"] . ' </td>
+                                        <td>' . substr_replace($row["time_from"], ':', 2, 0) . ' </td>
+                                        <td>' .  substr_replace($row["time_to"], ':', 2, 0) . ' </td>
+                                        <td>' . $row["faculty"] . ' </td>
+                                        <td>' . $row["block_no"] . ' </td>
+                                        <td>' . $row["room"] . ' </td>
+                                    </tr>';
+                                $school_year = $row["school_year"];
+                                $semester = $row["semester"];
+                            }
+                            echo '<script>$("#sy3").html("' . $school_year . '");
+                                            $("#sem3").html("' . $semester . '");
+                                            </script>'; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
+                <!-- end of table div -->
+                <div class=" col-12 ">
+                        <p class=" text-center fw-bold mt-5 old-sched">School Year: <span id="sy4"></span> | Semester: <span id="sem4"></span> </p>
+                                <table class="table table-striped text-center table4"">
+                        <thead>
+                            <tr>
+                                <th>Subject Code</th>
+                                <th>Description</th>
+                                <th>Units</th>
+                                <th>Day</th>
+                                <th>From</th>
+                                <th>To</th>
+                                <th>Faculty</th>
+                                <th>Block No</th>
+                                <th>Room</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            require 'includes/connection.php';
+                            $select_stmt = $conn->query("SELECT * FROM udm.schedule WHERE school_year='2020-2021' AND semester='1st'"); //prepared selct statement
+
+                            while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
+                                echo '<tr>
+                                        <td>' . $row["subject_code"] . ' </td>
+                                        <td>' . $row["description"] . ' </td>
+                                        <td>' . $row["units"] . ' </td>
+                                        <td>' . $row["day"] . ' </td>
+                                        <td>' . substr_replace($row["time_from"], ':', 2, 0) . ' </td>
+                                        <td>' .  substr_replace($row["time_to"], ':', 2, 0) . ' </td>
+                                        <td>' . $row["faculty"] . ' </td>
+                                        <td>' . $row["block_no"] . ' </td>
+                                        <td>' . $row["room"] . ' </td>
+                                    </tr>';
+                                $school_year = $row["school_year"];
+                                $semester = $row["semester"];
+                            }
+                            echo '<script>$("#sy4").html("' . $school_year . '");
+                                            $("#sem4").html("' . $semester . '");
+                                            </script>'; ?>
+                        </tbody>
+                    </table>
+                </div>
+                <hr>
                 <!-- end of table div -->
             </div>
         </div>
@@ -125,6 +214,6 @@
 </body>
 <!-- scripts for bootstrap -->
 <script src=" bootstrap5/js/bootstrap.bundle.min.js">
-                            </script>
+                                    </script>
 
 </html>
