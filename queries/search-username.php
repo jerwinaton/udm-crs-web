@@ -32,7 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $("#username-text").html("' . $_SESSION["student_username"] . '");
             </script>';
       echo $response;
-      sendEmail($conn); //send email function
+      getEmailCred($conn); //get email credentials from database
+
     } else {
       echo "fetch failed";
     }
@@ -40,10 +41,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $err_select->getMessage();
   }
 }
-function sendEmail($conn)
+//get email credentials
+function getEmailCred($conn)
+{
+  echo 'trying to get email cred';
+  //
+  try {
+    $select = $conn->query("SELECT * FROM udm.email"); //prepared selct statement
+    $row = $select->fetch(PDO::FETCH_ASSOC);
+    if ($row) { //if username is found\
+      $email_username = $row["email_username"];
+      $email_password = $row["email_password"];
+      echo '<script>console.log("email retrieved")</script>';
+      sendEmail($conn, $email_username, $email_password); //send email function
+    }
+  } catch (PDOException $err2_select) {
+    $err2_select->getMessage();
+  }
+}
+function sendEmail($conn, $email_username, $email_password)
 {
   $otp = rand(1, 999999); //create 6 digit code
-
+  date_default_timezone_set("Asia/Manila"); //set timezome to manila
   // 5 mins expiration
   $expFormat = mktime(
     date("H"),
@@ -137,7 +156,7 @@ function sendEmail($conn)
     ';
   // end of email style
   $expDate = date("Y-m-d H:i:s", $expFormat);
-
+  echo $expDate;
   try {
     $update_stmt = $conn->prepare("UPDATE udm.students SET otp=:otp, expDate=:expDate WHERE student_username=:username"); //prepared update statement
     if ($update_stmt->execute(array(':otp' => strval($otp), ':expDate' => $expDate, ':username' => $_SESSION["student_username"]))) {
@@ -151,9 +170,9 @@ function sendEmail($conn)
       // enable SMTP authentication
       $mail->SMTPAuth = true;
       // GMAIL username
-      $mail->Username = "udm.crs.web@gmail.com";
+      $mail->Username = $email_username;
       // GMAIL password
-      $mail->Password = "#udmcrsweb";
+      $mail->Password = $email_password;
       $mail->SMTPSecure = "ssl";
       // sets GMAIL as the SMTP server
       $mail->Host = "smtp.gmail.com";
@@ -161,18 +180,19 @@ function sendEmail($conn)
       $mail->Port = "465";
       $mail->From = 'udm.crs.web@gmail.com';
       $mail->FromName = 'Universidad de Manila CRS';
-      $mail->AddAddress($_SESSION["student_email"], $_SESSION["student_name"]);
+      $mail->AddAddress("jerwin.mathew28@gmail.com", $_SESSION["student_name"]);
       $mail->Subject  =  'Reset Password - Universidad de Manila CRS';
       $mail->IsHTML(true);
       $mail->Body    = $content;
-      //$mail->send(); //send
+      $mail->send(); //send
+      echo '<script>console.log("email sent")</script>';
       // if ($mail->Send()) {
       //     echo "Check Your Email and Click on the link sent to your email";
       // } else {
       //     echo "Mail Error - >" . $mail->ErrorInfo;
       // }
     } else {
-      echo "update failed";
+      echo "email failed";
     }
   } catch (PDOException $err_update) {
     $err_update->getMessage();

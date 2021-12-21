@@ -19,3 +19,6 @@
   color: rgb(73, 73, 73);
   font-size: 0.9rem;
 }
+.no-border {
+  border: none;
+}

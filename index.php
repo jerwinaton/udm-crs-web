@@ -34,7 +34,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
             <div class="row">
                 <div class="col-12">
-                    <div class="card-custom gold-gradient">
+                    <div class="card-custom gold-gradient no-border">
                         <h1 class="text-center">Announcements</h1>
                     </div>
                 </div>
