@@ -24,44 +24,11 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 </head>
 
 <body>
-    <nav class="navbar fixed-top navbar-expand-lg bg-white fw-bold  default-size">
-        <div class="container">
-            <a class="navbar-brand lightgray hover-lightgreen" href="#">
-                <img src="assets/images/udm_logo_300px.png" alt="udm logo" width="50" class="d-inline-block align-text-center">
-                UDM Student Portal</a>
-            <button class="navbar-toggler navbar-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse bg-white navbar-collapse " id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-end ">
-                    <li class="nav-item mx-2">
-                        <a class="nav-link announcements-link lightgray hover-lightgreen " aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link lightgray hover-lightgreen" href="#">View Schedule</a>
-                    </li>
-                    <li class="nav-item mx-2 ">
-                        <a class="nav-link lightgray hover-lightgreen " aria-current="page" href="#">View Grades</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link lightgray hover-lightgreen" href="#">Profile</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <a class="nav-link nav-link lightgray hover-lightgreen" href="#">Password</a>
-                    </li>
-                    <li class="nav-item mx-2">
-                        <form action="queries/logout.php" class="d-flex justify-content-center align-items-center" style="height:100%;" method="POST">
-                            <button class="btn-logout" name="btn-logout">logout</button>
-                        </form>
-                    </li>
-                    <!-- script to add style on current link -->
-                    <script>
-                        $(".announcements-link").addClass("active-link");
-                    </script>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <?php include 'includes/nav.php'; ?>
+    <!-- script to add style on current link -->
+    <script>
+        $(".announcements-link").addClass("active-link");
+    </script>
     <section class="announcements" style="margin-top:76px;">
         <div class="container">
 
