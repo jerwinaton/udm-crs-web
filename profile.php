@@ -51,7 +51,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             <img src="<?= $imageURL ?>" alt="" width="70">
                         </div>
                         <div>
-                            <p>Student No: <span><?= $student_no ?></span></p>
+                            <p>Student No: <span id="student_no"><?= $student_no ?></span></p>
                             <p>Student Name: <span><?= $student_name ?></span></p>
                             <p>Course: <span><?= $course ?></span></p>
                             <p>College: <span><?= $college ?></span></p>
@@ -61,9 +61,94 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             </div>
         </div>
     </section>
+    <!-- script to load profile -->
+    <script>
+        $(document).ready(() => {
+            const load = () => {
+                const id = $('#student_no').text();
+                $.ajax({
+                    url: "queries/load-profile.php",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    dataType: "JSON",
+                    success: function(response) {
+                        $.each(response, function(key, value) {
+                            console.log(value.first_name);
+                            $('#first_name').val(value.first_name).attr("disabled", "true");
+                            $('#middle_name').val(value.middle_name).attr("disabled", "true");
+                            $('#last_name').val(value.last_name).attr("disabled", "true");
+                            $('#lrn').val(value.lrn).attr("disabled", "true");
+                            $('#gender').val(value.gender).attr("disabled", "true");
+                            $('#birthdate').val(value.birthdate).attr("disabled", "true");
+                            $('#birthplace').val(value.birthplace).attr("disabled", "true");
+                            $('#address').val(value.address).attr("disabled", "true");
+                            $('#district').val(value.district).attr("disabled", "true");
+                            $('#town').val(value.town).attr("disabled", "true");
+                            $('#barangay').val(value.barangay).attr("disabled", "true");
+                            $('#zip_code').val(value.zip_code).attr("disabled", "true");
+                            $('#contact_no').val(value.contact_no).attr("disabled", "true");
+                            $('#email').val(value.email).attr("disabled", "true");
+                            $('#mothers_name').val(value.mothers_name).attr("disabled", "true");
+                            $('#mothers_contact').val(value.mothers_contact).attr("disabled", "true");
+                            $('#mothers_occupation').val(value.mothers_work).attr("disabled", "true");
+                            $('#fathers_name').val(value.fathers_name).attr("disabled", "true");
+                            $('#fathers_contact').val(value.fathers_contact).attr("disabled", "true");
+                            $('#fathers_occupation').val(value.fathers_work).attr("disabled", "true");
+                            $('#last_school_attended').val(value.last_school_attended).attr("disabled", "true");
+                        });
+                    }
+                });
+            }
+            load();
+            $("#edit").click((e) => {
+                e.preventDefault();
+                $('#first_name').removeAttr("disabled");
+                $('#middle_name').removeAttr("disabled");
+                $('#last_name').removeAttr("disabled");
+                $('#lrn').removeAttr("disabled");
+                $('#gender').removeAttr("disabled");
+                $('#birthdate').removeAttr("disabled");
+                $('#birthplace').removeAttr("disabled");
+                $('#address').removeAttr("disabled");
+                $('#district').removeAttr("disabled");
+                $('#town').removeAttr("disabled");
+                $('#barangay').removeAttr("disabled");
+                $('#zip_code').removeAttr("disabled");
+                $('#contact_no').removeAttr("disabled");
+                $('#email').removeAttr("disabled");
+                $('#mothers_name').removeAttr("disabled");
+                $('#mothers_contact').removeAttr("disabled");
+                $('#mothers_occupation').removeAttr("disabled");
+                $('#fathers_name').removeAttr("disabled");
+                $('#fathers_contact').removeAttr("disabled");
+                $('#fathers_occupation').removeAttr("disabled");
+                $('#last_school_attended').removeAttr("disabled");
+
+                $("#edit").css("display", "none");
+                $("#save").css("display", "block");
+                $("#cancel").css("display", "block");
+            });
+            // cancel
+            $("#cancel").click((e) => {
+                e.preventDefault();
+                load();
+                $("#edit").css("display", "block");
+                $("#save").css("display", "none");
+                $("#cancel").css("display", "none");
+            });
+        });
+    </script>
     <section class="edit-profile">
+
         <div class="container-form">
             <form action="" class="profile-form">
+                <div class="floating-buttons">
+                    <button id="edit">Edit</button>
+                    <button type="submit" id="save">Save</button>
+                    <button id="cancel">Cancel</button>
+                </div>
                 <div class="row justify-content-start seperate1">
                     <div class="col-md-4 col-sm-6">
                         <label for="first_name">First Name</label>
@@ -84,8 +169,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <div class="col-md-2 col-sm-4 col-6">
                         <label for="gender">Gender</label>
                         <select id="gender" name="gender" class="form-control">
-                            <option>Male</option>
-                            <option>Female</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
                         </select>
                     </div>
                     <div class="col-md-3 col-sm-4 col-6">
@@ -106,34 +191,34 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <div class="col-md-4 col-sm-2 col-4">
                         <label for="district">District</label>
                         <select id="district" name="district" class="form-control">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                            <option>6</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
                         </select>
                     </div>
                     <div class="col-md-4 col-sm-4 col-4">
                         <label for="town">Town</label>
                         <select id="town" name="town" class="form-control">
-                            <option>Binondo</option>
-                            <option>Ermita</option>
-                            <option>Intramuros</option>
-                            <option>Malate</option>
-                            <option>Paco</option>
-                            <option>Pandacan</option>
-                            <option>Port Area</option>
-                            <option>Quiapo</option>
-                            <option>Sampaloc</option>
-                            <option>San Andres</option>
-                            <option>San Miguel</option>
-                            <option>San Nicolas</option>
-                            <option>Santa Ana</option>
-                            <option>Santa Cruz</option>
-                            <option>Santa Mesa</option>
-                            <option>Tondo 1</option>
-                            <option>Tondo 2</option>
+                            <option value="Binondo">Binondo </option>
+                            <option value="Ermita">Ermita </option>
+                            <option value="Intramuros">Intramuros </option>
+                            <option value="Malate">Malate </option>
+                            <option value="Paco">Paco </option>
+                            <option value="Pandacan">Pandacan </option>
+                            <option value="Port Area">Port Area </option>
+                            <option value="Quiapo">Quiapo </option>
+                            <option value="Sampaloc">Sampaloc </option>
+                            <option value="San Andres">San Andres </option>
+                            <option value="San Miguel">San Miguel </option>
+                            <option value="San Nicolas">San Nicolas </option>
+                            <option value="Santa Ana">Santa Ana </option>
+                            <option value="Santa Cruz">Santa Cruz </option>
+                            <option value="Santa Mesa">Santa Mesa </option>
+                            <option value="Tondo 1">Tondo 1 </option>
+                            <option value="Tondo 2">Tondo 2 </option>
                         </select>
                     </div>
                     <!-- script to add barangay -->
@@ -196,8 +281,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <!-- seperate -->
                 <div class="row justify-content-start seperate4">
                     <div class="col-md-6 col-10">
-                        <label for="mothers_name">School Graduated before</label>
-                        <input type="text" class="form-control" id="mothers_name" name="mothers_name">
+                        <label for="last_school_attended">School Graduated before</label>
+                        <input type="text" class="form-control" id="last_school_attended" name="last_school_attended">
                     </div>
                 </div>
                 <!-- seperate -->
