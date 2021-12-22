@@ -3,7 +3,7 @@ session_start();
 include '../includes/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $update_stmt = $conn->prepare("UPDATE udm.students SET first_name=:first_name, 
+    $update_stmt = $conn->prepare("UPDATE xyashmqn_udm.students SET first_name=:first_name, 
     middle_name=:middle_name, last_name=:last_name, lrn=:lrn, gender=:gender, birthdate=:birthdate, 
     birthplace=:birthplace, address=:address,district=:district,town=:town,barangay=:barangay,
     zip_code=:zip_code,contact_no=:contact_no,email=:email,mothers_name=:mothers_name,

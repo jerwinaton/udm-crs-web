@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $("#verify-status-msg").addClass("status-msg-style");</script>';
     //verify code
     try {
-        $select_stmt = $conn->prepare("SELECT otp, expDate FROM udm.students WHERE student_username=:uname"); //prepared selct statement
+        $select_stmt = $conn->prepare("SELECT otp, expDate FROM xyashmqn_udm.students WHERE student_username=:uname"); //prepared selct statement
         $select_stmt->execute(array(':uname' => $username)); //execute and bind parameters
         $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
         if ($row) { //if username is found\

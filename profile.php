@@ -35,7 +35,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 <div class="col-12">
                     <?php include 'includes/connection.php';
 
-                    $select_stmt = $conn->prepare("SELECT * FROM udm.students WHERE student_username=:uname"); //prepared selct statement
+                    $select_stmt = $conn->prepare("SELECT * FROM xyashmqn_udm.students WHERE student_username=:uname"); //prepared selct statement
                     $select_stmt->execute(array(':uname' => $_SESSION["student_username"]));
                     $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
                     if ($row) {

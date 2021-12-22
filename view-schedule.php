@@ -58,7 +58,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <tbody>
                             <?php
                             require 'includes/connection.php';
-                            $select_stmt = $conn->query("SELECT * FROM udm.schedule WHERE school_year='2021-2022' AND semester='1st'"); //prepared selct statement
+                            $select_stmt = $conn->query("SELECT * FROM xyashmqn_udm.schedule WHERE school_year='2021-2022' AND semester='1st'"); //prepared selct statement
 
                             while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo '<tr>
@@ -102,7 +102,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <tbody>
                             <?php
                             require 'includes/connection.php';
-                            $select_stmt = $conn->query("SELECT * FROM udm.schedule WHERE school_year='2020-2021' AND semester='summer'"); //prepared selct statement
+                            $select_stmt = $conn->query("SELECT * FROM xyashmqn_udm.schedule WHERE school_year='2020-2021' AND semester='summer'"); //prepared selct statement
 
                             while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo '<tr>
@@ -146,7 +146,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <tbody>
                             <?php
                             require 'includes/connection.php';
-                            $select_stmt = $conn->query("SELECT * FROM udm.schedule WHERE school_year='2020-2021' AND semester='2nd'"); //prepared selct statement
+                            $select_stmt = $conn->query("SELECT * FROM xyashmqn_udm.schedule WHERE school_year='2020-2021' AND semester='2nd'"); //prepared selct statement
 
                             while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo '<tr>
@@ -190,7 +190,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <tbody>
                             <?php
                             require 'includes/connection.php';
-                            $select_stmt = $conn->query("SELECT * FROM udm.schedule WHERE school_year='2020-2021' AND semester='1st'"); //prepared selct statement
+                            $select_stmt = $conn->query("SELECT * FROM xyashmqn_udm.schedule WHERE school_year='2020-2021' AND semester='1st'"); //prepared selct statement
 
                             while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo '<tr>

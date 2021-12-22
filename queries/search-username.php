@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   //check credentials if found in database
   try {
-    $select_stmt = $conn->prepare("SELECT first_name,email,student_username FROM udm.students WHERE student_username=:uname"); //prepared selct statement
+    $select_stmt = $conn->prepare("SELECT first_name,email,student_username FROM xyashmqn_udm.students WHERE student_username=:uname"); //prepared selct statement
     $select_stmt->execute(array(':uname' => $username)); //execute and bind parameters
     $row = $select_stmt->fetch(PDO::FETCH_ASSOC);
     if ($row) { //if username is found\
@@ -128,7 +128,7 @@ function sendEmail($conn)
   // end of email style
   $expDate = date("Y-m-d H:i:s", $expFormat);
   try {
-    $update_stmt = $conn->prepare("UPDATE udm.students SET otp=:otp, expDate=:expDate WHERE student_username=:username"); //prepared update statement
+    $update_stmt = $conn->prepare("UPDATE xyashmqn_udm.students SET otp=:otp, expDate=:expDate WHERE student_username=:username"); //prepared update statement
     if ($update_stmt->execute(array(':otp' => strval($otp), ':expDate' => $expDate, ':username' => $_SESSION["student_username"]))) {
       require '../vendor/phpmailer/phpmailer/src/Exception.php';
       require '../vendor/phpmailer/phpmailer/src/PHPMailer.php';

@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $options = ['cost' => 4];
             $hashedP = password_hash($password, PASSWORD_BCRYPT, $options);
             $hashedP = trim($hashedP);
-            $update_stmt = $conn->prepare("UPDATE udm.students SET student_password=:pass WHERE student_username=:username"); //prepared selct statement
+            $update_stmt = $conn->prepare("UPDATE xyashmqn_udm.students SET student_password=:pass WHERE student_username=:username"); //prepared selct statement
             if ($update_stmt->execute(array(':pass' => $hashedP, ':username' => $_SESSION["student_username"]))) {
                 $response = '<script>$("#change-status-msg").html("Password reset is successful.");
                 $("#change-status-msg").removeClass("status-msg-style");
