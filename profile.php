@@ -76,27 +76,27 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     success: function(response) {
                         $.each(response, function(key, value) {
                             console.log(value.first_name);
-                            $('#first_name').val(value.first_name).attr("disabled", "true");
-                            $('#middle_name').val(value.middle_name).attr("disabled", "true");
-                            $('#last_name').val(value.last_name).attr("disabled", "true");
-                            $('#lrn').val(value.lrn).attr("disabled", "true");
-                            $('#gender').val(value.gender).attr("disabled", "true");
-                            $('#birthdate').val(value.birthdate).attr("disabled", "true");
-                            $('#birthplace').val(value.birthplace).attr("disabled", "true");
-                            $('#address').val(value.address).attr("disabled", "true");
-                            $('#district').val(value.district).attr("disabled", "true");
-                            $('#town').val(value.town).attr("disabled", "true");
-                            $('#barangay').val(value.barangay).attr("disabled", "true");
-                            $('#zip_code').val(value.zip_code).attr("disabled", "true");
-                            $('#contact_no').val(value.contact_no).attr("disabled", "true");
-                            $('#email').val(value.email).attr("disabled", "true");
-                            $('#mothers_name').val(value.mothers_name).attr("disabled", "true");
-                            $('#mothers_contact').val(value.mothers_contact).attr("disabled", "true");
-                            $('#mothers_occupation').val(value.mothers_work).attr("disabled", "true");
-                            $('#fathers_name').val(value.fathers_name).attr("disabled", "true");
-                            $('#fathers_contact').val(value.fathers_contact).attr("disabled", "true");
-                            $('#fathers_occupation').val(value.fathers_work).attr("disabled", "true");
-                            $('#last_school_attended').val(value.last_school_attended).attr("disabled", "true");
+                            $('#first_name').val(value.first_name).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#middle_name').val(value.middle_name).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#last_name').val(value.last_name).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#lrn').val(value.lrn).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#gender').val(value.gender).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#birthdate').val(value.birthdate).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#birthplace').val(value.birthplace).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#address').val(value.address).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#district').val(value.district).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#town').val(value.town).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#barangay').val(value.barangay).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#zip_code').val(value.zip_code).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#contact_no').val(value.contact_no).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#email').val(value.email).attr("disabled", "true").css("text-transform", "lowercase");
+                            $('#mothers_name').val(value.mothers_name).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#mothers_contact').val(value.mothers_contact).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#mothers_occupation').val(value.mothers_work).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#fathers_name').val(value.fathers_name).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#fathers_contact').val(value.fathers_contact).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#fathers_occupation').val(value.fathers_work).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#last_school_attended').val(value.last_school_attended).attr("disabled", "true").css("text-transform", "uppercase");
                         });
                     }
                 });
