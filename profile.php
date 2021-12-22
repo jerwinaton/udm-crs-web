@@ -139,9 +139,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 $("#cancel").css("display", "none");
             });
             // save
-            $('form').on('submit', function(e) {
-
+            $('#save').on('click', function(e) {
                 e.preventDefault();
+                $('.profile-form').submit();
 
                 $.ajax({
                     type: 'post',
