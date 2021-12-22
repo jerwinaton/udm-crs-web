@@ -9,11 +9,24 @@
 </head>
 
 <body>
-
+    <form action="" method="post">
+        <input type="text" name="username" placeholder="username">
+        <input type="text" name="password">
+        <button type="submit" name="btn">Submit</button>
+    </form>
     <?php
-    echo '<pre>';
-    var_dump($_SESSION);
-    echo '</pre>';
+    include 'includes/connection.php';
+    if (isset($_POST['btn'])) {
+        $password = $_POST['password']; //password textbox
+        $options = ['cost' => 4];
+        $hashedP = password_hash($password, PASSWORD_BCRYPT, $options);
+        $hashedP = trim($hashedP);
+        $update_stmt = $conn->prepare("UPDATE udm.students SET student_password=:pass WHERE student_username=:username"); //prepared selct statement
+        if ($update_stmt->execute(array(':pass' => $hashedP, ':username' => $_POST['username']))) {
+            echo $hashedP;
+            echo "success";
+        } //execute and bind parameters
+    }
     ?>
 
 </body>

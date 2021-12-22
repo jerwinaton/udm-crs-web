@@ -91,10 +91,10 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             $('#contact_no').val(value.contact_no).attr("disabled", "true").css("text-transform", "uppercase");
                             $('#email').val(value.email).attr("disabled", "true").css("text-transform", "lowercase");
                             $('#mothers_name').val(value.mothers_name).attr("disabled", "true").css("text-transform", "uppercase");
-                            $('#mothers_contact').val(value.mothers_contact).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#mothers_contact').val(value.mothers_contact_no).attr("disabled", "true").css("text-transform", "uppercase");
                             $('#mothers_occupation').val(value.mothers_work).attr("disabled", "true").css("text-transform", "uppercase");
                             $('#fathers_name').val(value.fathers_name).attr("disabled", "true").css("text-transform", "uppercase");
-                            $('#fathers_contact').val(value.fathers_contact).attr("disabled", "true").css("text-transform", "uppercase");
+                            $('#fathers_contact').val(value.fathers_contact_no).attr("disabled", "true").css("text-transform", "uppercase");
                             $('#fathers_occupation').val(value.fathers_work).attr("disabled", "true").css("text-transform", "uppercase");
                             $('#last_school_attended').val(value.last_school_attended).attr("disabled", "true").css("text-transform", "uppercase");
                         });
@@ -212,8 +212,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <div class="col-md-2 col-sm-4 col-6">
                         <label for="gender">Gender</label>
                         <select id="gender" name="gender" class="form-control">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
                     </div>
                     <div class="col-md-3 col-sm-4 col-6">
@@ -245,23 +245,23 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     <div class="col-md-4 col-sm-4 col-4">
                         <label for="town">Town</label>
                         <select id="town" name="town" class="form-control">
-                            <option value="Binondo">Binondo </option>
-                            <option value="Ermita">Ermita </option>
-                            <option value="Intramuros">Intramuros </option>
-                            <option value="Malate">Malate </option>
-                            <option value="Paco">Paco </option>
-                            <option value="Pandacan">Pandacan </option>
-                            <option value="Port Area">Port Area </option>
-                            <option value="Quiapo">Quiapo </option>
-                            <option value="Sampaloc">Sampaloc </option>
-                            <option value="San Andres">San Andres </option>
-                            <option value="San Miguel">San Miguel </option>
-                            <option value="San Nicolas">San Nicolas </option>
-                            <option value="Santa Ana">Santa Ana </option>
-                            <option value="Santa Cruz">Santa Cruz </option>
-                            <option value="Santa Mesa">Santa Mesa </option>
-                            <option value="Tondo 1">Tondo 1 </option>
-                            <option value="Tondo 2">Tondo 2 </option>
+                            <option value="binondo">Binondo </option>
+                            <option value="ermita">Ermita </option>
+                            <option value="intramuros">Intramuros </option>
+                            <option value="malate">Malate </option>
+                            <option value="paco">Paco </option>
+                            <option value="pandacan">Pandacan </option>
+                            <option value="port area">Port Area </option>
+                            <option value="quiapo">Quiapo </option>
+                            <option value="sampaloc">Sampaloc </option>
+                            <option value="san andres">San Andres </option>
+                            <option value="san miguel">San Miguel </option>
+                            <option value="san nicolas">San Nicolas </option>
+                            <option value="santa ana">Santa Ana </option>
+                            <option value="santa cruz">Santa Cruz </option>
+                            <option value="santa mesa">Santa Mesa </option>
+                            <option value="tondo 1">Tondo 1 </option>
+                            <option value="tondo 2">Tondo 2 </option>
                         </select>
                     </div>
                     <!-- script to add barangay -->
