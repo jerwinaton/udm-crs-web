@@ -101,7 +101,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     }
                 });
             }
-            load();
+            load(); //call the load
             $("#edit").click((e) => {
                 e.preventDefault();
                 $('#first_name').removeAttr("disabled");
@@ -138,13 +138,56 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 $("#save").css("display", "none");
                 $("#cancel").css("display", "none");
             });
+            // save
+            $('form').on('submit', function(e) {
+
+                e.preventDefault();
+
+                $.ajax({
+                    type: 'post',
+                    url: 'queries/edit-profile.php',
+                    data: $('form').serialize(),
+                    beforeSend: function() {
+                        $("#save").html("Updating...");
+                        console.log("Updating");
+                    },
+                    complete: function() {
+                        $("#save").html("Save");
+                    },
+                    success: function(response) {
+                        load();
+                        $("#edit").css("display", "block");
+                        $("#save").css("display", "none");
+                        $("#cancel").css("display", "none");
+                        $("#status-msg").html(response);
+                        var myModal = new bootstrap.Modal(document.getElementById('staticBackdrop'), {
+                            keyboard: false
+                        })
+                        myModal.show();
+                    }
+                });
+
+            });
         });
     </script>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-body d-flex flex-column justify-content-center">
+                    <p class="text-center fw-bold">Your profile has been updated.</p>
+                    <button type="button" class="btn btn-success" data-bs-dismiss="modal">Ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="edit-profile">
 
         <div class="container-form">
             <form action="" class="profile-form">
-                <div class="floating-buttons">
+                <div class="floating-buttons d-flex flex-row">
                     <button id="edit">Edit</button>
                     <button type="submit" id="save">Save</button>
                     <button id="cancel">Cancel</button>

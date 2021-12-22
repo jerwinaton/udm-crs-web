@@ -42,7 +42,6 @@
 }
 /* floating buttons */
 .floating-buttons {
-  width: 90px;
   position: fixed;
   top: 80%;
   right: 10%;
@@ -55,6 +54,7 @@
   box-shadow: 0px 2px 40px 0px rgba(102, 102, 102, 0.1);
   -webkit-box-shadow: 0px 2px 40px 0px rgba(102, 102, 102, 0.1);
   -moz-box-shadow: 0px 2px 40px 0px rgba(102, 102, 102, 0.1);
+  margin: 10px;
 }
 .floating-buttons button:first-child {
   background: rgb(23, 100, 214);
