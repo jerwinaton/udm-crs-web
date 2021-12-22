@@ -104,9 +104,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             load(); //call the load
             $("#edit").click((e) => {
                 e.preventDefault();
-                $('#first_name').removeAttr("disabled");
                 $('#middle_name').removeAttr("disabled");
-                $('#last_name').removeAttr("disabled");
                 $('#lrn').removeAttr("disabled");
                 $('#gender').removeAttr("disabled");
                 $('#birthdate').removeAttr("disabled");
@@ -332,6 +330,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             </form>
         </div>
     </section>
+    <footer class="d-flex justify-content-center align-items-center">
+        <p class="mb-0" style="font-size: .7rem;">Copyright &copy; UDM|CRS All Right Reserved 2021</p>
+    </footer>
 </body>
 <!-- scripts for bootstrap -->
 <script src="bootstrap5/js/bootstrap.bundle.min.js"></script>

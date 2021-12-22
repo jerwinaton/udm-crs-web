@@ -7,9 +7,7 @@ use PHPMailer\PHPMailer\Exception;
 require '../includes/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-  if (isset($_SESSION["loggedin"])) { //check session if the user is already logged in
-    header("location: index.php");
-  }
+
   $username = $_POST['username']; //username textbox
   $response = '<script>$("#status-msg").html("Username was not found in the database.");
     $("#status-msg").addClass("status-msg-style");</script>';
@@ -35,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       sendEmail($conn); //get email credentials from database
 
     } else {
-      echo "fetch failed";
+      echo $response;
     }
   } catch (PDOException $err_select) {
     $err_select->getMessage();
@@ -129,7 +127,6 @@ function sendEmail($conn)
   </html>';
   // end of email style
   $expDate = date("Y-m-d H:i:s", $expFormat);
-  echo $expDate;
   try {
     $update_stmt = $conn->prepare("UPDATE udm.students SET otp=:otp, expDate=:expDate WHERE student_username=:username"); //prepared update statement
     if ($update_stmt->execute(array(':otp' => strval($otp), ':expDate' => $expDate, ':username' => $_SESSION["student_username"]))) {
@@ -163,11 +160,6 @@ function sendEmail($conn)
       } else {
         echo '<script>console.log("email not sent")</script>';
       }
-      // if ($mail->Send()) {
-      //     echo "Check Your Email and Click on the link sent to your email";
-      // } else {
-      //     echo "Mail Error - >" . $mail->ErrorInfo;
-      // }
     } else {
       echo "email failed";
     }

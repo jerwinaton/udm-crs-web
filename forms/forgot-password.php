@@ -46,12 +46,12 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                                     data: $('form').serialize(),
                                     beforeSend: function() {
                                         $("#proceed").html("Searching...");
-                                        $("#proceed").attr('disable', 'true');
+                                        $("#proceed").attr('disabled', 'true');
                                         console.log("Searching...");
                                     },
                                     complete: function() {
                                         $("#proceed").html("Proceed");
-                                        $("#proceed").attr('disable', 'false');
+                                        $("#proceed").removeAttr('disabled');
                                     },
                                     success: function(response) {
                                         console.log("success");
@@ -120,6 +120,8 @@ if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
                             $(".inputs > #username").val("");
                             $(".otp-form").css("display", "none");
                             $(".forgot-password-form").css("display", "block");
+                            clearInterval(interval);
+                            clearInterval(interval2)
                         });
 
                         //veerify code

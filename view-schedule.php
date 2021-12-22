@@ -218,9 +218,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             </div>
         </div>
     </section>
+    <footer class=" d-flex justify-content-center align-items-center">
+                                    <p class="mb-0" style="font-size: .7rem;">Copyright &copy; UDM|CRS All Right Reserved 2021</p>
+                                    </footer>
 </body>
 <!-- scripts for bootstrap -->
 <script src=" bootstrap5/js/bootstrap.bundle.min.js">
-                                    </script>
+</script>
 
 </html>

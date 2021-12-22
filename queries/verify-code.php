@@ -2,9 +2,7 @@
 include '../includes/connection.php';
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_SESSION["loggedin"])) { //check session if the user is already logged in
-        header("location: index.php");
-    }
+
     $username =  $_SESSION["student_username"]; //username variable on session
     $enteredCode =  $_POST["enteredCode"];
     $response = '<script>$("#verify-status-msg").html("Code is invalid or expired.");

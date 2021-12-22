@@ -2,9 +2,7 @@
 include '../includes/connection.php';
 session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_SESSION["loggedin"])) { //check session if the user is already logged in
-        header("location: index.php");
-    }
+
 
     $response = '<script>$("#reset-status-msg").html("Passwords not matched!.");
     $("#reset-status-msg").addClass("status-msg-style");</script>';

@@ -71,7 +71,8 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             }
                             echo '<script>$("#sy1").html("' . $school_year . '");
                                             $("#sem1").html("' . $semester . '");
-                                            </script>'; ?>
+                                            </script>';
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -92,7 +93,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </thead>
                         <tbody>
                             <?php
-                            require 'includes/connection.php';
                             $select_stmt = $conn->prepare("SELECT * FROM udm.grades WHERE school_year='2020-2021' AND semester='summer' AND student_no=:student_username"); //prepared selct statement
                             $select_stmt->execute(array(':student_username' => $_SESSION["student_username"]));
                             while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -104,8 +104,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                                         <td>' . $row["course_grade"] . ' </td>
                                         <td>' . $row["remark"] . ' </td>
                                     </tr>';
-                                $school_year = $row["school_year"];
-                                $semester = $row["semester"];
                             }
                             ?>
                         </tbody>
@@ -128,7 +126,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </thead>
                         <tbody>
                             <?php
-                            require 'includes/connection.php';
                             $select_stmt = $conn->prepare("SELECT * FROM udm.grades WHERE school_year='2020-2021' AND semester='2nd' AND student_no=:student_username"); //prepared selct statement
                             $select_stmt->execute(array(':student_username' => $_SESSION["student_username"]));
                             while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -166,7 +163,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         </thead>
                         <tbody>
                             <?php
-                            require 'includes/connection.php';
                             $select_stmt = $conn->prepare("SELECT * FROM udm.grades WHERE school_year='2020-2021' AND semester='1st' AND student_no=:student_username"); //prepared selct statement
                             $select_stmt->execute(array(':student_username' => $_SESSION["student_username"]));
                             while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -183,7 +179,9 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                             }
                             echo '<script>$("#sy4").html("' . $school_year . '");
                                             $("#sem4").html("' . $semester . '");
-                                            </script>'; ?>
+                                            </script>';
+
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -192,9 +190,12 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
             </div>
         </div>
     </section>
+    <footer class=" d-flex justify-content-center align-items-center">
+                                    <p class="mb-0" style="font-size: .7rem;">Copyright &copy; UDM|CRS All Right Reserved 2021</p>
+                                    </footer>
 </body>
 <!-- scripts for bootstrap -->
 <script src=" bootstrap5/js/bootstrap.bundle.min.js">
-                                    </script>
+</script>
 
 </html>
