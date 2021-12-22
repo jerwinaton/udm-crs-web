@@ -55,7 +55,7 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                         <tbody>
                             <?php
                             require 'includes/connection.php';
-                            $select_stmt = $conn->prepare("SELECT * FROM udxyashmqn_udm.grades WHERE school_year='2021-2022' AND semester='1st' AND student_no=:student_username"); //prepared selct statement
+                            $select_stmt = $conn->prepare("SELECT * FROM xyashmqn_udm.grades WHERE school_year='2021-2022' AND semester='1st' AND student_no=:student_username"); //prepared selct statement
                             $select_stmt->execute(array(':student_username' => $_SESSION["student_username"]));
                             while ($row = $select_stmt->fetch(PDO::FETCH_ASSOC)) {
                                 echo '<tr>
