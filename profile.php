@@ -75,7 +75,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                     dataType: "JSON",
                     success: function(response) {
                         $.each(response, function(key, value) {
-                            console.log(value.first_name);
                             $('#first_name').val(value.first_name).attr("disabled", "true").css("text-transform", "uppercase");
                             $('#middle_name').val(value.middle_name).attr("disabled", "true").css("text-transform", "uppercase");
                             $('#last_name').val(value.last_name).attr("disabled", "true").css("text-transform", "uppercase");
@@ -144,15 +143,19 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
                 $.ajax({
                     type: 'post',
                     url: 'queries/edit-profile.php',
-                    data: $('form').serialize(),
+                    data: $('.profile-form').serialize(),
                     beforeSend: function() {
                         $("#save").html("Updating...");
+ 			$("#save").attr("disabled","true");
                         console.log("Updating");
                     },
                     complete: function() {
                         $("#save").html("Save");
+			$("#save").removeAttr("disabled");
                     },
                     success: function(response) {
+                        alert(response);
+
                         load();
                         $("#edit").css("display", "block");
                         $("#save").css("display", "none");
